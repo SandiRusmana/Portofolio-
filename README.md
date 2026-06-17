@@ -1,6 +1,6 @@
 # Proyek Portofolio Web Statis - Sandi Rusmana
 
-Proyek ini adalah halaman portofolio personal yang dibuat untuk menampilkan informasi diri, keahlian, dan proyek yang telah saya kerjakan selama mengikuti program PKL (Praktik Kerja Lapangan).
+Proyek ini adalah halaman portofolio personal yang dibuat untuk menampilkan informasi diri, keahlian, dan proyek yang telah saya kerjakan.
 
 ## 🚀 Fitur Halaman Utama
 - **Hero Section:** Perkenalan singkat profil diri secara profesional.

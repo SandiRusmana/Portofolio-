@@ -1,12 +1,35 @@
 // ========================
-// Header Scroll Effect
+// Header Scroll & Hide Effect
 // ========================
 const header = document.querySelector('.header');
 const menuIcon = document.getElementById('menu-icon');
 const navbar = document.querySelector('.navbar');
+let lastScrollTop = 0;
 
 window.addEventListener('scroll', () => {
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  // 1. Efek Background saat Di-scroll (Logika Asli)
   header.classList.toggle('scrolled', window.scrollY > 50);
+
+  // 2. Efek Sembunyi Otomatis khusus Mode HP (Antigravity Mode)
+  if (window.innerWidth <= 768) {
+    // Jika menu garis 3 sedang tidak terbuka, jalankan efek sembunyi
+    if (!navbar.classList.contains('open')) {
+      if (scrollTop > lastScrollTop) {
+        // Scroll ke bawah = Sembunyikan header
+        header.style.top = '-100px';
+      } else {
+        // Scroll ke atas = Munculkan kembali header
+        header.style.top = '0';
+      }
+    }
+  } else {
+    // Layar Desktop tetap normal selalu di atas
+    header.style.top = '0';
+  }
+
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 });
 
 // ========================
@@ -21,6 +44,8 @@ const navbarLinks = document.querySelectorAll('.navbar a');
 navbarLinks.forEach(link => {
   link.addEventListener('click', () => {
     navbar.classList.remove('open');
+    // Memastikan header langsung muncul kembali saat menu diklik
+    header.style.top = '0';
   });
 });
 
