@@ -40,12 +40,10 @@ filterButtons.forEach(btn => {
     portfolioCards.forEach(card => {
       if (filterValue === 'all') {
         card.style.display = 'block';
+      } else if (card.getAttribute('data-category') === filterValue) {
+        card.style.display = 'block';
       } else {
-        if (card.getAttribute('data-category') === filterValue) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
+        card.style.display = 'none';
       }
     });
   });
@@ -62,7 +60,7 @@ function setupScrollReveal() {
   revealElements.forEach(el => el.classList.add('reveal'));
 
   const observer = new IntersectionObserver(
-    (entries) => {
+    entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
@@ -83,7 +81,7 @@ function setupSkillBars() {
   const skillBars = document.querySelectorAll('.skill-progress');
 
   const observer = new IntersectionObserver(
-    (entries) => {
+    entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animated');
